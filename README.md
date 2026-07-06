@@ -35,7 +35,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.33.0](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.33.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;121 patches total
+> **[v1.0.0](https://github.com/NullPTAddr/morphe-patches-extended/releases/tag/v1.0.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`null-pt-addr`&nbsp;&nbsp;•&nbsp;&nbsp;132 patches total
 <details>
 <summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;73 patches</summary>
 <br>
@@ -197,7 +197,35 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 </details>
 
 <details>
-<summary>🌐 Universal&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<summary>📦 com.dudu.autoui&nbsp;&nbsp;•&nbsp;&nbsp;9 patches</summary>
+<br>
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Fix Weather](#fix-weather) | Fix weather info |  |
+| [Fix Windows Control](#fix-windows-control) | Fix windows position control |  |
+| [Lowest Pip as Highest](#lowest-pip-as-highest) | Replace the lowest pip dpi level with the highest |  |
+| [Music Lyric](#music-lyric) | search music lyric and auto download to selected folder |  |
+| [Sort App](#sort-app) | Sort app menu by app name |  |
+| [Spoof Signature](#spoof-signature) | Spoof signature |  |
+| [Strings Patch](#strings-patch) | Replace strings in strings.xml |  |
+| [User Patch](#user-patch) | Set vip type and expire time |  |
+| [fix Navbar](#fix-navbar) | fix Navbar flags |  |
+
+</details>
+
+<details>
+<summary>📦 com.google.android.apps.maps&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Maps automotive more POIs](#maps-automotive-more-pois) | Make maps automotive always show POIs |  |
+
+</details>
+
+<details>
+<summary>🌐 Universal&nbsp;&nbsp;•&nbsp;&nbsp;4 patches</summary>
 <br>
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -205,6 +233,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Change package name](#change-package-name) | Appends ".morphe" to the package name by default. Changing the package name of the app can lead to unexpected issues. | • Package name<br>• Update permissions<br>• Update providers |
 | [Disable Play Store updates](#disable-play-store-updates) | Disables Play Store updates by setting the version code to the maximum allowed. This patch does not work if the app is installed by mounting and may cause unexpected issues with some apps. |  |
 | [Override certificate pinning](#override-certificate-pinning) | Overrides certificate pinning, allowing to inspect traffic via a proxy. |  |
+| [Spoof App Signature](#spoof-app-signature) | Spoof the signature of the app and add GmsCore MetaData to the AndroidManifest.xml https://github.com/kangrio/AuroraStore-BYD | • APK Path |
 
 </details>
 
