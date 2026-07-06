@@ -23,6 +23,8 @@ dependencies {
 
     // Android API stubs defined here.
     compileOnly(project(":patches:stub"))
+
+    compileOnly("com.android.tools.build:apksig:9.1.1")
 }
 
 tasks {

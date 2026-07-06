@@ -19,4 +19,4 @@ internal val applicationInitHook = ExtensionHook(
     )
 )
 
-val sharedExtensionPatch = sharedExtensionPatch("dudu", applicationInitHook)
+val sharedExtensionPatch = sharedExtensionPatch(listOf("dudu"), applicationInitHook)

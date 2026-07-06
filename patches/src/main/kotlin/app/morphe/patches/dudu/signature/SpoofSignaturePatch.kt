@@ -2,32 +2,33 @@ package app.morphe.patches.dudu.signature
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.fingerprint
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.dudu.Constans
+import app.morphe.patches.dudu.shared.Constants
 import app.morphe.patches.dudu.extension.sharedExtensionPatch
 
-private val applicationFingerprint = fingerprint {
-    Fingerprint(
-        custom = { method, classDef ->
-            val superClass = classDef.superclass
-            if (superClass != null && superClass.equals("Landroid/app/Application;", true)) {
-                if (method.name.equals("<init>", true)) {
-                    return@Fingerprint true
-                }
+private val applicationFingerprint = Fingerprint(
+    custom = { method, classDef ->
+        val superClass = classDef.superclass
+        if (superClass != null && superClass.equals("Landroid/app/Application;", true)) {
+            if (method.name.equals("<init>", true)) {
+                return@Fingerprint true
             }
-            false
         }
-    )
-}
+        false
+    }
+)
 
 @Suppress("unused")
-val spoofSignaturePatch = bytecodePatch(
-    name = "Spoof Signature"
+internal val spoofSignaturePatch = bytecodePatch(
+    name = "Spoof Signature",
+    description = "Spoof signature"
 ) {
-    compatibleWith(Constans.compatibility)
+    compatibleWith(Constants.compatibility)
     dependsOn(sharedExtensionPatch)
     execute {
-        applicationFingerprint.method.addInstructions(0, "invoke-static {}, Lapp/revanced/extension/dudulauncher/signature/SignaturePatch;->killPM()V")
+        applicationFingerprint.method.addInstructions(
+            0,
+            "invoke-static {}, Lapp/morphe/extension/dudu/patches/spoof/SpoofSignature;->killPM()V"
+        )
     }
 }

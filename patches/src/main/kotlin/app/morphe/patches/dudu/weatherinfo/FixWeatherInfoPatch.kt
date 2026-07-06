@@ -6,10 +6,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
-import app.morphe.patcher.fingerprint
-import app.morphe.patcher.patch.Compatibility
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.dudu.Constans
+import app.morphe.patches.dudu.shared.Constants
 import app.morphe.patches.dudu.signature.spoofSignaturePatch
 import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.Opcode
@@ -49,8 +47,8 @@ private val weatherPullingFingerprint = Fingerprint(
     )
 )
 
-private val moduleDrivingServiceFingerprint = Fingerprint (
-    custom =  { method, classDef ->
+private val moduleDrivingServiceFingerprint = Fingerprint(
+    custom = { method, classDef ->
         classDef.endsWith("service/ModuleDrivingService;")
     }
 )
@@ -58,9 +56,9 @@ private val moduleDrivingServiceFingerprint = Fingerprint (
 @Suppress("unused")
 val fixWeatherInfoPatch = bytecodePatch(
     name = "Fix Weather",
-    default = true
+    description = "Fix weather info"
 ) {
-    compatibleWith(Constans.compatibility)
+    compatibleWith(Constants.compatibility)
     dependsOn(spoofSignaturePatch)
 
     execute {

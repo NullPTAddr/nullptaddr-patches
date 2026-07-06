@@ -3,7 +3,8 @@ package app.morphe.patches.dudu.misc
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.dudu.Constans
+import app.morphe.patches.dudu.shared.Constants
+import app.morphe.patches.dudu.signature.spoofSignaturePatch
 
 private val setVipTypeFingerprint = Fingerprint(
     parameters = listOf("Ljava/lang/Integer;"),
@@ -22,9 +23,11 @@ private val setVipExpireTimeFingerprint = Fingerprint(
 
 @Suppress("unused")
 val vipPatch = bytecodePatch(
-    name = "Vip Patch"
+    name = "User Patch",
+    description = "Set vip type and expire time"
 ) {
-    compatibleWith(Constans.compatibility)
+    compatibleWith(Constants.compatibility)
+    dependsOn(spoofSignaturePatch)
     execute {
         setVipTypeFingerprint.method.addInstructions(
             0, """

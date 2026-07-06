@@ -3,11 +3,11 @@ package app.morphe.patches.dudu.music
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.dudu.Constans
+import app.morphe.patches.dudu.shared.Constants
 import app.morphe.patches.dudu.extension.sharedExtensionPatch
-import kotlin.collections.listOf
+import app.morphe.patches.dudu.signature.spoofSignaturePatch
 
-private val musicTitleFingerprint = Fingerprint (
+private val musicTitleFingerprint = Fingerprint(
     custom = { method, classDef ->
         classDef.equals("Lcom/dudu/autoui/service/musicInfo/GetMusicInfoService\$b;")
     },
@@ -15,7 +15,7 @@ private val musicTitleFingerprint = Fingerprint (
     strings = listOf("android.media.metadata.TITLE")
 )
 
-private val musicLyricLoadingFingerprint = Fingerprint (
+private val musicLyricLoadingFingerprint = Fingerprint(
     custom = { method, classDef ->
         classDef.equals("Lcom/dudu/autoui/manage/music/LrcUtil;")
     },
@@ -28,19 +28,19 @@ val musicInfoPatch = bytecodePatch(
     "Music Lyric",
     "search music lyric and auto download to selected folder"
 ) {
-    compatibleWith(Constans.compatibility)
-    dependsOn(sharedExtensionPatch)
+    compatibleWith(Constants.compatibility)
+    dependsOn(sharedExtensionPatch, spoofSignaturePatch)
     execute {
         musicTitleFingerprint.method.addInstructions(
             0, """
-            invoke-static {p1}, Lapp/revanced/extension/dudulauncher/music/MusicName;->musicInfoRename(Landroid/media/MediaMetadata;)Landroid/media/MediaMetadata;
+            invoke-static {p1}, Lapp/morphe/extension/dudu/pathes/music/MusicName;->musicInfoRename(Landroid/media/MediaMetadata;)Landroid/media/MediaMetadata;
             move-result-object p1
         """.trimIndent()
         )
 
         musicLyricLoadingFingerprint.method.addInstructions(
             0, """
-            invoke-static {}, Lapp/revanced/extension/dudulauncher/music/LyricFinder;->waitForLyric()V
+            invoke-static {}, Lapp/morphe/extension/dudu/pathes/music/LyricFinder;->waitForLyric()V
     """.trimIndent()
         )
     }

@@ -5,16 +5,17 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.dudu.Constans
+import app.morphe.patches.dudu.shared.Constants
+import app.morphe.patches.dudu.signature.spoofSignaturePatch
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.formats.Instruction31i
 
-private val stateBarStillShowOnKeybaordFingerprint = Fingerprint (
+private val stateBarStillShowOnKeybaordFingerprint = Fingerprint(
     parameters = listOf("Landroid/content/Context;"),
     returnType = "V",
     strings = listOf("navBarHeight:")
 )
-private val statusBarStillShowOnKeybaordFingerprint = Fingerprint (
+private val statusBarStillShowOnKeybaordFingerprint = Fingerprint(
     parameters = listOf("Lcom/dudu/autoui/service/DuduAccessibilityService;"),
     returnType = "V",
     strings = listOf("winparams.height:")
@@ -22,9 +23,11 @@ private val statusBarStillShowOnKeybaordFingerprint = Fingerprint (
 
 @Suppress("unused")
 val stateBarStillShowOnKeybaordPatch = bytecodePatch(
-    "fix Navbar"
+    "fix Navbar",
+    description = "fix Navbar flags"
 ) {
-    compatibleWith(Constans.compatibility)
+    compatibleWith(Constants.compatibility)
+    dependsOn(spoofSignaturePatch)
     execute {
         statusBarStillShowOnKeybaordFingerprint.method.apply {
             instructions.forEachIndexed { index, builderInstruction ->

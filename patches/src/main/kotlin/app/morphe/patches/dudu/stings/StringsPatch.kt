@@ -2,46 +2,39 @@ package app.morphe.patches.dudu.stings
 
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
-import app.morphe.patches.dudu.Constans
-import app.morphe.util.findElementByAttributeValue
-import java.io.File
+import app.morphe.patches.dudu.shared.Constants
+import app.morphe.patches.dudu.signature.spoofSignaturePatch
+import app.morphe.util.asSequence
 
 
 @Suppress("unused")
-val stringsPatch = resourcePatch("Strings Patch") {
-    dependsOn(resourceMappingPatch)
-    compatibleWith(Constans.compatibility)
+val stringsPatch = resourcePatch(
+    "Strings Patch",
+    description = "Replace strings in strings.xml"
+) {
+    compatibleWith(Constants.compatibility)
+    dependsOn(spoofSignaturePatch, resourceMappingPatch)
 
     val stringsToReplace = mutableMapOf(
-        "recent_power_consumption" to "Consumption",
-
-        )
+        "Total Power Consumption" to "Total Cons.",
+        "Avg Power Consumption" to "Avg Cons.",
+        "Recent Power Consumption" to "Recent Cons.",
+        "Current Power Usage" to "Current Power",
+        "Battery Temperature" to "Battery Temp.",
+    )
 
     execute {
-        val stringResourceFiles = mutableListOf<File>()
-
-        get("res").walk().forEach { file ->
-            if (file.isFile && file.name.equals("strings.xml", ignoreCase = true)) {
-                stringResourceFiles.add(file)
-            }
-        }
-
-        var foundString = false
-        stringResourceFiles.forEach { filePath ->
-            document(filePath.absolutePath).use { document ->
-                stringsToReplace.forEach { (key, value) ->
-                    var node = document.documentElement.childNodes.findElementByAttributeValue(
-                        "name",
-                        key
-                    )
-
-                    // String is not localized in all languages.
-                    if (node != null) {
-                        node.textContent = value
-                        foundString = true
+        get("res")
+            .walk()
+            .filter { it.isFile && it.name.equals("strings.xml", ignoreCase = true) }
+            .forEach { file ->
+                document(file.absolutePath).use { document ->
+                    document.documentElement.childNodes.asSequence().forEach { node ->
+                        stringsToReplace[node.textContent]?.let { replacement ->
+                            node.textContent = replacement
+                        }
                     }
                 }
             }
-        }
     }
 }

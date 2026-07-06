@@ -5,11 +5,12 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.dudu.Constans
+import app.morphe.patches.dudu.shared.Constants
+import app.morphe.patches.dudu.signature.spoofSignaturePatch
 import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.iface.reference.Reference
 
-private val appListSortingFingerprint = Fingerprint (
+private val appListSortingFingerprint = Fingerprint(
     parameters = listOf("Ljava/lang/String;", "Ljava/lang/String;"),
     strings = listOf("com.dudu", "com.wow"),
     returnType = "I",
@@ -18,7 +19,7 @@ private val appListSortingFingerprint = Fingerprint (
     }
 )
 
-private val appListSortingFingerprint2 = Fingerprint (
+private val appListSortingFingerprint2 = Fingerprint(
     strings = listOf("com.dudu.setting", "com.dudu.action.restart_auto"),
     returnType = "I",
     custom = { method, classDef ->
@@ -27,8 +28,12 @@ private val appListSortingFingerprint2 = Fingerprint (
 )
 
 @Suppress("unused")
-val sortingAppMenuPatch = bytecodePatch("Sort App") {
-    compatibleWith(Constans.compatibility)
+val sortingAppMenuPatch = bytecodePatch(
+    name = "Sort App",
+    description = "Sort app menu by app name"
+) {
+    compatibleWith(Constants.compatibility)
+    dependsOn(spoofSignaturePatch)
     execute {
         appListSortingFingerprint.method.apply {
             instructions.forEachIndexed { index, builderInstruction ->
