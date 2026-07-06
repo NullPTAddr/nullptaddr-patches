@@ -4,10 +4,10 @@ patches {
     about {
         name = "NullPTAddr Patches"
         description = "NullPTAddr Patches"
-        source = "git@github.com:NullPTAddr/morphe-patches-extended.git"
+        source = "git@github.com:NullPTAddr/nullptaddr-patches.git"
         author = "NullPTAddr"
         contact = "na"
-        website = "https://github.com/NullPTAddr/morphe-patches-extended"
+        website = "https://github.com/NullPTAddr/nullptaddr-patches"
         license = "GNU General Public License v3.0, with additional GPL section 7 requirements"
     }
 }
