@@ -18,6 +18,8 @@ private val applicationFingerprint = Fingerprint(
     }
 )
 
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/dudu/patches/spoof/SpoofSignature;"
+
 @Suppress("unused")
 internal val spoofSignaturePatch = bytecodePatch(
     name = "Spoof Signature",
@@ -28,7 +30,7 @@ internal val spoofSignaturePatch = bytecodePatch(
     execute {
         applicationFingerprint.method.addInstructions(
             0,
-            "invoke-static {}, Lapp/morphe/extension/dudu/patches/spoof/SpoofSignature;->killPM()V"
+            "invoke-static {}, $EXTENSION_CLASS->killPM()V"
         )
     }
 }
