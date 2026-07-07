@@ -32,7 +32,7 @@ val musicInfoPatch = bytecodePatch(
     "search music lyric and auto download to selected folder"
 ) {
     compatibleWith(Constants.compatibility)
-    dependsOn(sharedExtensionPatch, spoofSignaturePatch)
+    dependsOn(spoofSignaturePatch)
     execute {
         musicTitleFingerprint.method.addInstructions(
             0, """
