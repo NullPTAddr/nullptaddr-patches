@@ -22,6 +22,9 @@ private val musicLyricLoadingFingerprint = Fingerprint(
     strings = listOf("SDATA_MUSIC_LRC_LOCAL_PATH")
 )
 
+private const val EXTENSION_MUSIC_CLASS = "Lapp/morphe/extension/dudu/pathes/music/MusicName;"
+private const val EXTENSION_LYRIC_FINDER_CLASS = "Lapp/morphe/extension/dudu/pathes/music/LyricFinder;"
+
 
 @Suppress("unused")
 val musicInfoPatch = bytecodePatch(
@@ -33,14 +36,14 @@ val musicInfoPatch = bytecodePatch(
     execute {
         musicTitleFingerprint.method.addInstructions(
             0, """
-            invoke-static {p1}, Lapp/morphe/extension/dudu/pathes/music/MusicName;->musicInfoRename(Landroid/media/MediaMetadata;)Landroid/media/MediaMetadata;
+            invoke-static {p1}, $EXTENSION_MUSIC_CLASS->musicInfoRename(Landroid/media/MediaMetadata;)Landroid/media/MediaMetadata;
             move-result-object p1
         """.trimIndent()
         )
 
         musicLyricLoadingFingerprint.method.addInstructions(
             0, """
-            invoke-static {}, Lapp/morphe/extension/dudu/pathes/music/LyricFinder;->waitForLyric()V
+            invoke-static {}, $EXTENSION_LYRIC_FINDER_CLASS->waitForLyric()V
     """.trimIndent()
         )
     }

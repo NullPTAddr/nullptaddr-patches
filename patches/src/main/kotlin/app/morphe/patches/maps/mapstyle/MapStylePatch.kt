@@ -10,6 +10,8 @@ private val mapStyleFingerprint = Fingerprint(
     strings = listOf("SATELLITE_HYBRID", "ROADMAP", "NAVIGATION")
 )
 
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/maps/patches/MapStylePatches;"
+
 @Suppress("unused")
 val mapStylePatch = bytecodePatch(
     name = "Maps automotive more POIs",
@@ -30,7 +32,7 @@ val mapStylePatch = bytecodePatch(
 
         method.addInstructions(
             0, """
-            invoke-static {p0}, Lapp/morphe/extension/maps/patches/MapStylePatches;->replaceMapStyle(Ljava/lang/Enum;)Ljava/lang/Enum;
+            invoke-static {p0}, $EXTENSION_CLASS->replaceMapStyle(Ljava/lang/Enum;)Ljava/lang/Enum;
             move-result-object p0
             check-cast p0, $className
             """.trimIndent()
