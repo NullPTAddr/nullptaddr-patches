@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "patches": [
     {
       "name": "Add to queue",
@@ -3202,6 +3202,34 @@
       "options": []
     },
     {
+      "name": "Fix Accessibility Service",
+      "description": "Auto restart accessibility service else restart app",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.dudu.autoui",
+          "name": "Dudu Launcher",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Fix Weather",
       "description": "Fix weather info",
       "default": true,
@@ -3211,7 +3239,7 @@
       "compatiblePackages": [
         {
           "packageName": "com.dudu.autoui",
-          "name": null,
+          "name": "Dudu Launcher",
           "description": null,
           "apkFileType": null,
           "appIconColor": null,
@@ -3239,7 +3267,7 @@
       "compatiblePackages": [
         {
           "packageName": "com.dudu.autoui",
-          "name": null,
+          "name": "Dudu Launcher",
           "description": null,
           "apkFileType": null,
           "appIconColor": null,
@@ -5333,7 +5361,7 @@
       "compatiblePackages": [
         {
           "packageName": "com.dudu.autoui",
-          "name": null,
+          "name": "Dudu Launcher",
           "description": null,
           "apkFileType": null,
           "appIconColor": null,
@@ -5361,7 +5389,7 @@
       "compatiblePackages": [
         {
           "packageName": "com.google.android.apps.maps",
-          "name": null,
+          "name": "Google Maps",
           "description": null,
           "apkFileType": null,
           "appIconColor": null,
@@ -5601,13 +5629,12 @@
       "description": "search music lyric and auto download to selected folder",
       "default": true,
       "dependencies": [
-        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": [
         {
           "packageName": "com.dudu.autoui",
-          "name": null,
+          "name": "Dudu Launcher",
           "description": null,
           "apkFileType": null,
           "appIconColor": null,
@@ -7716,7 +7743,7 @@
       "compatiblePackages": [
         {
           "packageName": "com.dudu.autoui",
-          "name": null,
+          "name": "Dudu Launcher",
           "description": null,
           "apkFileType": null,
           "appIconColor": null,
@@ -7912,7 +7939,7 @@
       "compatiblePackages": [
         {
           "packageName": "com.dudu.autoui",
-          "name": null,
+          "name": "Dudu Launcher",
           "description": null,
           "apkFileType": null,
           "appIconColor": null,
@@ -8300,7 +8327,7 @@
       "compatiblePackages": [
         {
           "packageName": "com.dudu.autoui",
-          "name": null,
+          "name": "Dudu Launcher",
           "description": null,
           "apkFileType": null,
           "appIconColor": null,
@@ -8689,7 +8716,7 @@
       "compatiblePackages": [
         {
           "packageName": "com.dudu.autoui",
-          "name": null,
+          "name": "Dudu Launcher",
           "description": null,
           "apkFileType": null,
           "appIconColor": null,
@@ -8948,7 +8975,7 @@
       "compatiblePackages": [
         {
           "packageName": "com.dudu.autoui",
-          "name": null,
+          "name": "Dudu Launcher",
           "description": null,
           "apkFileType": null,
           "appIconColor": null,

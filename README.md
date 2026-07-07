@@ -35,7 +35,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.0.0](https://github.com/NullPTAddr/morphe-patches-extended/releases/tag/v1.0.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`null-pt-addr`&nbsp;&nbsp;•&nbsp;&nbsp;132 patches total
+> **[v1.1.0](https://github.com/NullPTAddr/nullptaddr-patches/releases/tag/v1.1.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`null-pt-addr`&nbsp;&nbsp;•&nbsp;&nbsp;133 patches total
 <details>
 <summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;73 patches</summary>
 <br>
@@ -197,11 +197,12 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 </details>
 
 <details>
-<summary>📦 com.dudu.autoui&nbsp;&nbsp;•&nbsp;&nbsp;9 patches</summary>
+<summary>📦 Dudu Launcher&nbsp;&nbsp;•&nbsp;&nbsp;10 patches</summary>
 <br>
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
+| [Fix Accessibility Service](#fix-accessibility-service) | Auto restart accessibility service else restart app |  |
 | [Fix Weather](#fix-weather) | Fix weather info |  |
 | [Fix Windows Control](#fix-windows-control) | Fix windows position control |  |
 | [Lowest Pip as Highest](#lowest-pip-as-highest) | Replace the lowest pip dpi level with the highest |  |
@@ -215,7 +216,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 </details>
 
 <details>
-<summary>📦 com.google.android.apps.maps&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<summary>📦 Google Maps&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
 <br>
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |

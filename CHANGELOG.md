@@ -1,3 +1,10 @@
+## [1.1.0](https://github.com/NullPTAddr/nullptaddr-patches/compare/v1.0.0...v1.1.0) (2026-07-07)
+
+### ✨ New Features
+
+* **dudu:** add Fix Accessibility Service patch ([3695e03](https://github.com/NullPTAddr/nullptaddr-patches/commit/3695e039576e0e4c9de4866233f6fdc0cf83d63a))
+* **dudu:** update Fix windows control Patch ([89ac066](https://github.com/NullPTAddr/nullptaddr-patches/commit/89ac066fea8b1e1d1a7111b567add6f63103762f))
+
 ## 1.0.0 (2026-07-06)
 
 ### 🐛 Bug Fixes
