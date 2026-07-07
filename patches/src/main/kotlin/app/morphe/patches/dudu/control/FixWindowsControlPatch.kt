@@ -1,33 +1,16 @@
 package app.morphe.patches.dudu.control
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.dudu.shared.Constants
 import app.morphe.patches.dudu.signature.spoofSignaturePatch
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import com.android.tools.smali.dexlib2.iface.instruction.formats.ArrayPayload
 
 
-private val keywords = listOf(
-    "BODYWORK_LF_WINDOW_CTRL_SET",
-    "BODYWORK_LR_WINDOW_CTRL_SET",
-    "BODYWORK_RF_WINDOW_CTRL_SET",
-    "BODYWORK_RR_WINDOW_CTRL_SET"
-)
 private val windowsControlFingerprint = Fingerprint(
-    parameters = listOf("[I", "[I"),
-    returnType = "Z",
-    custom = { method, _ ->
-        val fields = method.instructions
-            .filterIsInstance<ReferenceInstruction>()
-            .mapNotNull { it.reference as? FieldReference }
-            .map { it.name }
-            .toSet()
-
-        keywords.all(fields::contains)
-    }
+    strings = listOf("BydOperation:", "SDATA_BYD_ALLOW_OPEN_WIN")
 )
 
 @Suppress("unused")
@@ -38,11 +21,39 @@ val fixWindowsControlPatch = bytecodePatch(
     compatibleWith(Constants.compatibility)
     dependsOn(spoofSignaturePatch)
     execute {
-        windowsControlFingerprint.method.addInstructions(
-            0,
-            """
-                nop
-            """.trimIndent()
-        )
+        windowsControlFingerprint.classDef.methods.apply {
+            forEach method@{ mutableMethod ->
+                mutableMethod.instructions.forEachIndexed { index, builderInstruction ->
+                    when (builderInstruction) {
+                        is ArrayPayload -> {
+                            val arraySet = builderInstruction.arrayElements.toSet()
+                            if (arraySet == setOf(1, 4)) {
+                                mutableMethod.replaceInstruction(
+                                    index,
+                                    """
+                                        .array-data 4
+                                                0x1
+                                                0x2
+                                        .end array-data
+                                    """.trimIndent()
+                                )
+                            } else if (arraySet == setOf(2, 3)) {
+                                mutableMethod.replaceInstruction(
+                                    index,
+                                    """
+                                        .array-data 4
+                                                0x3
+                                                0x4
+                                        .end array-data
+                                    """.trimIndent()
+                                )
+                            }
+                        }
+
+                        else -> {}
+                    }
+                }
+            }
+        }
     }
 }
