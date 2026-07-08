@@ -4,6 +4,7 @@ import app.morphe.patcher.patch.Option
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
+import app.morphe.patches.all.misc.extension.sharedExtensionPatch
 import app.morphe.util.adoptChild
 import com.android.apksig.apk.ApkUtils
 import com.android.apksig.internal.apk.v2.V2SchemeVerifier
@@ -22,6 +23,7 @@ val spoofSignature = resourcePatch(
     description = "Spoof the signature of the app and add GmsCore MetaData to the AndroidManifest.xml https://github.com/kangrio/AuroraStore-BYD",
     default = false
 ) {
+    dependsOn(sharedExtensionPatch())
     originalFilePathOption = stringOption(
         key = "filePath",
         default = "Default",
