@@ -35,9 +35,9 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.1.0](https://github.com/NullPTAddr/nullptaddr-patches/releases/tag/v1.1.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`null-pt-addr`&nbsp;&nbsp;•&nbsp;&nbsp;133 patches total
+> **[v1.2.0](https://github.com/NullPTAddr/nullptaddr-patches/releases/tag/v1.2.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`null-pt-addr`&nbsp;&nbsp;•&nbsp;&nbsp;135 patches total
 <details>
-<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;73 patches</summary>
+<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;72 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -78,7 +78,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Force original audio](#force-original-audio) | Adds an option to always use the original audio track. |  |
 | [GmsCore support](#gmscore-support) | Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services. |  |
 | [Hide Shorts components](#hide-shorts-components) | Adds options to hide components related to Shorts. | • Hide Shorts app shortcut<br>• Hide Shorts widget |
-| [Hide ads](#hide-ads) | Adds options to remove general ads. |  |
+| [Hide ads](#hide-ads) | Adds options to hide general ads, Premium promotions and video ads. |  |
 | [Hide autoplay preview](#hide-autoplay-preview) | Adds an option to hide the autoplay preview at the end of videos. |  |
 | [Hide end screen cards](#hide-end-screen-cards) | Adds an option to hide suggested video cards at the end of videos. |  |
 | [Hide end screen suggested video](#hide-end-screen-suggested-video) | Adds an option to hide the suggested video at the end of videos. |  |
@@ -117,14 +117,13 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Spoof video streams](#spoof-video-streams) | Adds options to spoof the client video streams to fix playback. |  |
 | [Swipe controls](#swipe-controls) | Adds options to enable and configure volume and brightness swipe controls. |  |
 | [Theme](#theme) | Adds options for theming and applies a custom background theme (dark background theme defaults to pure black). | • Dark theme background color<br>• Light theme background color |
-| [Video ads](#video-ads) | Adds an option to remove ads in the video player. |  |
 | [Video quality](#video-quality) | Adds options to set default video qualities and always use the advanced video quality menu. |  |
 | [Voice over translation](#voice-over-translation) | Adds additional voice over languages using text-to-speech synchronized to the video playback. |  |
 
 </details>
 
 <details>
-<summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;29 patches</summary>
+<summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;32 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -142,16 +141,19 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Custom branding](#custom-branding) | Adds options to change the app icon and app name. Branding cannot be changed for mounted (root) installations. | • App name<br>• Custom icon |
 | [Disable DRC audio](#disable-drc-audio) | Adds an option to disable DRC (Dynamic Range Compression) audio. |  |
 | [Disable QUIC protocol](#disable-quic-protocol) | Adds an option to disable QUIC (Quick UDP Internet Connections) network protocol. |  |
+| [Downloads](#downloads) | Adds support to download songs with an external downloader app using the in-app download button. |  |
 | [Enable debugging](#enable-debugging) | Adds options for debugging and exporting Morphe logs to the clipboard. |  |
 | [Enable exclusive audio playback](#enable-exclusive-audio-playback) | Enables the option to play audio without video. |  |
 | [Enable forced miniplayer](#enable-forced-miniplayer) | Adds an option to enable forced miniplayer when switching between music videos, podcasts, or songs. |  |
 | [Enable swipe to dismiss miniplayer](#enable-swipe-to-dismiss-miniplayer) | Adds an option to enable dismissing the miniplayer by swiping down on it. |  |
 | [Force original audio](#force-original-audio) | Adds an option to always use the original audio track. |  |
 | [GmsCore support](#gmscore-support) | Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services. |  |
-| [Hide ads](#hide-ads) | Adds options to hide ads such as the fullscreen Premium popup and "Get Music Premium" label. |  |
+| [Hide ads](#hide-ads) | Adds options to hide fullscreen ads, Premium promotions and video ads. |  |
 | [Hide buttons](#hide-buttons) | Adds options to hide the cast, history, notification, and search buttons. |  |
-| [Hide category bar](#hide-category-bar) | Adds an option to hide the category bar at the top of the homepage. |  |
-| [Hide music video ads](#hide-music-video-ads) | Adds an option to hide ads that appear while listening to or streaming music videos, podcasts, or songs. |  |
+| [Hide filter bar](#hide-filter-bar) | Adds an option to hide the filter bar at the top of the homepage. |  |
+| [Hide flyout menu components](#hide-flyout-menu-components) | Adds options to hide individual items from the player and queue flyout menus. |  |
+| [Hide layout components](#hide-layout-components) | Adds options to hide general layout components. |  |
+| [Hide music action buttons](#hide-music-action-buttons) | Adds options to hide action buttons under the player. |  |
 | [Miniplayer previous and next buttons](#miniplayer-previous-and-next-buttons) | Adds options to show previous and next track buttons in the miniplayer. |  |
 | [Navigation bar](#navigation-bar) | Adds options to hide navigation bar, labels and buttons. |  |
 | [Network proxy](#network-proxy) | Adds settings to route supported network requests through an HTTP or HTTPS proxy. |  |
@@ -172,8 +174,8 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;2026.26.0 | 🧪&nbsp;2026.25.0 | 🧪&nbsp;2026.24.0 | 2026.14.0 | 2026.04.0 |
-| :---: | :---: | :---: | :---: | :---: |
+| 🧪&nbsp;2026.27.0 | 🧪&nbsp;2026.26.0 | 🧪&nbsp;2026.25.0 | 🧪&nbsp;2026.24.0 | 2026.14.0 | 2026.04.0 |
+| :---: | :---: | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
@@ -221,7 +223,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
-| [Maps automotive more POIs](#maps-automotive-more-pois) | Make maps automotive always show POIs |  |
+| [Maps more POIs](#maps-more-pois) | Make maps always show POIs even in navigation mode |  |
 
 </details>
 
