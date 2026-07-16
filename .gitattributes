@@ -1,0 +1,5 @@
+README.md merge=ours
+NOTICE merge=ours
+patches-list.json merge=ours
+patches-bundle.json merge=ours
+gradle.properties merge=ours
