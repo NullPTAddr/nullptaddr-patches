@@ -21,9 +21,8 @@ private val musicLyricLoadingFingerprint = Fingerprint(
     },
     strings = listOf("SDATA_MUSIC_LRC_LOCAL_PATH")
 )
-
-private const val EXTENSION_MUSIC_CLASS = "Lapp/morphe/extension/dudu/pathes/music/MusicName;"
-private const val EXTENSION_LYRIC_FINDER_CLASS = "Lapp/morphe/extension/dudu/pathes/music/LyricFinder;"
+private const val EXTENSION_MUSIC_CLASS = "Lapp/morphe/extension/dudu/patches/music/MusicName;"
+private const val EXTENSION_LYRIC_FINDER_CLASS = "Lapp/morphe/extension/dudu/patches/music/LyricFinder;"
 
 
 @Suppress("unused")
