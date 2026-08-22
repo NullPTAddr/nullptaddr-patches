@@ -5,6 +5,7 @@ import android.app.ActivityManager
 import android.content.Context
 import android.content.pm.PackageManager
 import android.provider.Settings
+import app.morphe.extension.dudu.patches.DuduUtils
 import app.morphe.extension.shared.Utils
 
 class AutoRestartPatch {
@@ -81,8 +82,8 @@ class AutoRestartPatch {
             val context = getContext()
             val isWriteSecureSettingGranted =
                 context.checkSelfPermission(Manifest.permission.WRITE_SECURE_SETTINGS) == PackageManager.PERMISSION_GRANTED
-            if (isWriteSecureSettingGranted && retryingCount > 2) {
-                executeCommand("am force-stop com.dudu.autoui")
+            if (isWriteSecureSettingGranted && retryingCount > 1) {
+                DuduUtils.executeShellCommand("am force-stop com.dudu.autoui")
                 return true
             }
             if (stopService()) {
@@ -94,18 +95,6 @@ class AutoRestartPatch {
                 return true
             }
             return false
-        }
-
-        private fun executeCommand(command: String) {
-            try {
-                val shellManageClass = Class.forName("com.dudu.autoui.manage.shellManage.k")
-                val getInstanceMethod = shellManageClass.getDeclaredMethod("h")
-                val instance = getInstanceMethod.invoke(null)
-                val methodA = shellManageClass.getDeclaredMethod("a", String::class.java)
-                methodA.invoke(instance, command)
-            }catch (e: Throwable) {
-                e.printStackTrace()
-            }
         }
     }
 }
