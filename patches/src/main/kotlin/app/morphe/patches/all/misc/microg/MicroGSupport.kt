@@ -1,4 +1,4 @@
-package app.morphe.patches.all.misc.spoof
+package app.morphe.patches.all.misc.microg
 
 import app.morphe.patcher.PatcherConfig
 import app.morphe.patcher.patch.PatchException
@@ -19,9 +19,9 @@ private const val V2_BLOCK_ID = 0x7109871a
 private const val V3_BLOCK_ID = 0xf05368c0.toInt()
 
 @Suppress("unused")
-val spoofSignature = resourcePatch(
-    name = "Spoof App Signature",
-    description = "Spoof the signature of the app and add GmsCore MetaData to the AndroidManifest.xml https://github.com/kangrio/AuroraStore-BYD",
+val microGSupportPatch = resourcePatch(
+    name = "MicroG Support",
+    description = "Making support MicroG",
     default = false
 ) {
     dependsOn(sharedExtensionPatch())
