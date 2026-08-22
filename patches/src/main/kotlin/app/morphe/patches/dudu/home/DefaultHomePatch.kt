@@ -6,13 +6,17 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.dudu.shared.Constants
 import app.morphe.patches.dudu.signature.spoofSignaturePatch
 
-val bootReceiverFingerprint = Fingerprint(
-    returnType = "V",
-    parameters = listOf("Landroid/content/Context;", "Landroid/content/Intent;"),
-    name = "onReceive",
-    definingClass = "Lcom/dudu/autoui/receiver/BootReceiver;"
-)
-
+val applicationInit = Fingerprint(
+        custom = { method, classDef ->
+            val superClass = classDef.superclass
+            if (superClass != null && superClass.equals("Landroid/app/Application;", true)) {
+                if (method.name == "onCreate") {
+                    return@Fingerprint true
+                }
+            }
+            false
+        }
+    )
 
 val setDefaultHomePatch = bytecodePatch(
     name = "setDefaultHome",
@@ -22,7 +26,7 @@ val setDefaultHomePatch = bytecodePatch(
     dependsOn(spoofSignaturePatch)
 
     execute {
-        bootReceiverFingerprint.methodOrNull?.apply {
+        applicationInit.methodOrNull?.apply {
             addInstruction(
                 0,
                 """
