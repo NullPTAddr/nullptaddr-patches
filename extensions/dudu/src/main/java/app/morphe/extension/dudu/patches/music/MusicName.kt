@@ -8,8 +8,12 @@ class MusicName {
         @JvmStatic
         fun musicInfoRename(mediaMetadata: MediaMetadata?): MediaMetadata? {
             if (mediaMetadata == null) return mediaMetadata
-            val musicName = mediaMetadata.getString(MediaMetadata.METADATA_KEY_TITLE).replace(Regex("[(\\[|【「]"), "_")
-                .split("_")[0].trim()
+            val musicName = mediaMetadata.getString(MediaMetadata.METADATA_KEY_TITLE)
+                ?.replace(Regex("[(\\[|【「]"), "_")
+                ?.split("_")?.get(0)
+                ?.trim()
+                ?: return mediaMetadata
+
             Utils.runOnBackgroundThread {
                 LyricFinder.searchLyricAndSave(musicName)
             }
