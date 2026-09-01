@@ -1,4 +1,4 @@
-name: Open a PR to null-pt-addr
+name: Open a PR to main
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  MESSAGE: Merge branch `${{ github.head_ref || github.ref_name }}` to `null-pt-addr`
+  MESSAGE: Merge branch `${{ github.head_ref || github.ref_name }}` to `main`
 
 jobs:
   pull-request:
@@ -20,7 +20,7 @@ jobs:
       - name: Open pull request
         uses: repo-sync/pull-request@v2
         with:
-          destination_branch: null-pt-addr
+          destination_branch: main
           pr_title: 'chore: ${{ env.MESSAGE }}'
           pr_body: |
             This pull request will ${{ env.MESSAGE }}.
