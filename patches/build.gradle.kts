@@ -2,12 +2,12 @@ group = "app.morphe"
 
 patches {
     about {
-        name = "Morphe Patches"
-        description = "Patches for Morphe"
-        source = "git@github.com:MorpheApp/morphe-patches.git"
-        author = "MorpheApp"
+        name = "NullPTAddr Patches"
+        description = "NullPTAddr Patches"
+        source = "git@github.com:NullPTAddr/nullptaddr-patches.git"
+        author = "NullPTAddr"
         contact = "na"
-        website = "https://morphe.software"
+        website = "https://github.com/NullPTAddr/nullptaddr-patches"
         license = "GNU General Public License v3.0, with additional GPL section 7 requirements"
     }
 }
@@ -26,6 +26,8 @@ dependencies {
 
     // Android API stubs defined here.
     compileOnly(project(":patches:stub"))
+
+    compileOnly("com.android.tools.build:apksig:9.1.1")
 }
 
 tasks {

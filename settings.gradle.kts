@@ -1,4 +1,4 @@
-rootProject.name = "morphe-patches"
+rootProject.name = "nullptaddr-patches"
 
 pluginManagement {
     repositories {
